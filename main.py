@@ -48,7 +48,7 @@ def create_gpt_chatbot():
     from langchain_openai import ChatOpenAI
     from langchain.chains import ConversationChain
     memory = ConversationBufferMemory(memory_key="history", return_messages=True)
-    os.environ["OPENAI_API_KEY"] = ""
+    os.environ["OPENAI_API_KEY"] = "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"
     chatbot = ConversationChain(
         llm=ChatOpenAI(model_name=MODEL),
         memory=memory
@@ -58,7 +58,7 @@ def create_gpt_chatbot():
 # Streamlit의 session_state에 챗봇 저장 (초기화 방지)
 if "chatbot" not in st.session_state:
     with st.spinner("DeepSeek 챗봇 초기화 중입니다..."):
-        chatbot = create_ollama_chatbot()
+        chatbot = create_gpt_chatbot()
         st.session_state.chatbot = chatbot
     st.write("DeepSeek 챗봇이 준비되었습니다! 질문을 입력하세요.")
 

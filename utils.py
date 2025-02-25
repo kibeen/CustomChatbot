@@ -1,7 +1,6 @@
 import contextlib
 import io
 import re
-from langdetect import detect  # ✅ 언어 감지 라이브러리 추가
 
 
 # LLM이 생성한 코드를 파싱하는 함수를 정의합니다.
@@ -47,11 +46,3 @@ def run_code(input_code: str, **kwargs):
 def clean_response(response):
     """DeepSeek 모델의 '<think>...</think>' 태그 내용을 제거하는 함수"""
     return re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
-
-
-# ✅ 영어 응답 감지 및 한국어 강제 변환
-def ensure_korean_response(response):
-    """DeepSeek 모델이 영어로 응답하는 경우 한국어로 다시 요청"""
-    if detect(response) != "ko":  # 응답이 한국어가 아닐 경우
-        return "⚠️ 오류: 답변이 영어로 생성되었습니다. 다시 한 번 질문해 주세요!"
-    return response

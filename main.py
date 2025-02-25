@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 
 
-MODEL = "gpt-4o"
+MODEL = "deepseek-r1:1.5b"
 
 # Streamlit 페이지 설정
 st.set_page_config(page_title="ChatGB")
@@ -58,7 +58,7 @@ def create_gpt_chatbot():
 # Streamlit의 session_state에 챗봇 저장 (초기화 방지)
 if "chatbot" not in st.session_state:
     with st.spinner("DeepSeek 챗봇 초기화 중입니다..."):
-        chatbot = create_gpt_chatbot()
+        chatbot = create_ollama_chatbot()
         st.session_state.chatbot = chatbot
     st.write("DeepSeek 챗봇이 준비되었습니다! 질문을 입력하세요.")
 

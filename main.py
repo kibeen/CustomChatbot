@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 
 
-MODEL = "deepseek-r1:14b"
+MODEL = "gpt-4o"
 
 # Streamlit 페이지 설정
 st.set_page_config(page_title="ChatGB")

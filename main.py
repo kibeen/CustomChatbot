@@ -48,7 +48,7 @@ def create_gpt_chatbot():
     from langchain_openai import ChatOpenAI
     from langchain.chains import ConversationChain
     memory = ConversationBufferMemory(memory_key="history", return_messages=True)
-    os.environ["OPENAI_API_KEY"] = "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"
+    openai.api_key = st.secrets["GPT_API_KEY"]
     chatbot = ConversationChain(
         llm=ChatOpenAI(model_name=MODEL),
         memory=memory
